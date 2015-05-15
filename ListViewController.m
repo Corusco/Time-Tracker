@@ -7,16 +7,33 @@
 //
 
 #import "ListViewController.h"
+#import "ListTableViewDataSource.h"
 
 @interface ListViewController ()
+
+@property (strong, nonatomic) ListTableViewDataSource *listDataSource;
+@property (strong, nonatomic) UITableView *tableView;
 
 @end
 
 @implementation ListViewController
 
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if (self) {
+        _listDataSource = [ListTableViewDataSource new];
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:_tableView];
+    
+    self.tableView.dataSource = self.listDataSource;
 }
 
 - (void)didReceiveMemoryWarning {
