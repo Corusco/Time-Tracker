@@ -13,4 +13,7 @@
 @property (strong, nonatomic) NSDate *startTime;
 @property (strong, nonatomic) NSDate *endTime;
 
+- (id)initWithDictionary: (NSDictionary *)dictionary;
+- (NSDictionary *)convertEntryToDictionary;
+
 @end

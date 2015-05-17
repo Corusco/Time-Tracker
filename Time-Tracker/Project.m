@@ -10,6 +10,9 @@
 #import "Entry.h"
 #import "ProjectController.h"
 
+static NSString * const titleKey = @"title";
+static NSString * const entriesKey = @"entries";
+
 @interface Project ()
 
 @property (strong, nonatomic) NSArray *entriesArray;
@@ -48,15 +51,31 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
-        tit
-    }
-    
+        _title = dictionary[titleKey];
+        
+        NSMutableArray *entries = [NSMutableArray new];
+        for (NSDictionary *entry in dictionary[entriesKey]) {
+            [entries addObject:[[Entry alloc] initWithDictionary:entry]];
+        }
+        
+        _entriesArray = entries;
+        }
+    return self;
 }
+    
+
 
 - (NSDictionary *)convertProjectToDictionary {
     
-    NSMutableDictionary
-    return dictionary;
+    NSMutableDictionary *projectDicitionary = [NSMutableDictionary new];
+    if (self.title) {
+        [projectDicitionary setObject:self forKey:titleKey];
+    }
+    NSMutableArray *entriesInProject = [NSMutableArray new];
+    for (Entry *entry in self.entriesArray) {
+        [entriesInProject addObject:[entry convertEntryToDictionary]];
+    }
+    return projectDicitionary;
 }
 
 

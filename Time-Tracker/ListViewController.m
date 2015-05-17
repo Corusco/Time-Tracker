@@ -8,6 +8,7 @@
 
 #import "ListViewController.h"
 #import "ListTableViewDataSource.h"
+#import "ProjectController.h"
 
 @interface ListViewController ()
 
@@ -22,7 +23,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
-        _listDataSource = [ListTableViewDataSource new];
+        self.listDataSource = [ListTableViewDataSource new];
+        self.tableView.dataSource = self.listDataSource;
     }
     
     return self;
@@ -30,10 +32,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_tableView];
     
-    self.tableView.dataSource = self.listDataSource;
 }
 
 - (void)didReceiveMemoryWarning {
