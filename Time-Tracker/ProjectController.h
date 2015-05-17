@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Project.h"
 
 @interface ProjectController : NSObject
+
+@property (strong, nonatomic, readonly) NSArray *projectsArray;
+
++ (instancetype)sharedInstance;
+
+- (void) addProject:(Project *)project;
+- (void) removeProject:(Project *)project;
 
 @end
