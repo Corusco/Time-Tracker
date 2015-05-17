@@ -10,7 +10,7 @@
 #import "ListTableViewDataSource.h"
 #import "ProjectController.h"
 
-@interface ListViewController ()
+@interface ListViewController () <UITableViewDelegate>
 
 @property (strong, nonatomic) ListTableViewDataSource *listDataSource;
 @property (strong, nonatomic) UITableView *tableView;
@@ -40,6 +40,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    Project *project = [ProjectController sharedInstance].projectsArray[indexPath.row];
 }
 
 /*

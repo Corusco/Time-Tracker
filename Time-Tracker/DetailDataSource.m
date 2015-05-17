@@ -16,6 +16,11 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cellID"];
     }
+    
+    Entry *entry = [self.project entriesArray][indexPath.row];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", entry.startTime, entry.endTime];
+    
     return cell;
 }
 

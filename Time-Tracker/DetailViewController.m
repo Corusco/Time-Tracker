@@ -32,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.entriesTable.dataSource = self.detailTableDataSource;
+    self.detailTableDataSource.project = self.project;
 }
 
 - (void)didReceiveMemoryWarning {
