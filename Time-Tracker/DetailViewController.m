@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.entriesTable.dataSource = self.detailTableDataSource;
 }
 
 - (void)didReceiveMemoryWarning {
